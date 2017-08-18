@@ -8,17 +8,8 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-    <!--扫描service类包，应用spring注解-->
-    <context:component-scan base-package="com.smart"></context:component-scan>
-    <!--开启事物注解实现-->
-    <tx:annotation-driven />
-
-    <!-- 打开aop对@Aspectj的注解支持 ,相当于为注解提供解析功能-->
-    <aop:aspectj-autoproxy/>
-
-    <!--配置事务管理器-->
-    <bean id="translationManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="datasource"/>
-
+    <!--扫描类包将spring标注的类自动转化为bean，同时完成bean的注入-->
+    <context:component-scan base-package="com.smart.dao"/>
     <!--数据源配置-->
     <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
           p:driverClassName="com.mysql.jdbc.Driver"
@@ -28,7 +19,4 @@
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" p:dataSource-ref="datasource"/>
 
-    <!--<bean class="com.smart.service.UserService" id="userService">
-        <property name="jdbcTemplate" ref="jdbcTemplate"/>
-    </bean>-->
 </beans>

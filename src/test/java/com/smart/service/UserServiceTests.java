@@ -2,17 +2,17 @@ package com.smart.service;
 
 import com.smart.domain.User;
 import com.smart.service.UserService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.annotations.Test;
 
 import java.util.Date;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath*:/conf/smart-*.xml")
-public class UserServiceTests {
+public class UserServiceTests extends AbstractTransactionalTestNGSpringContextTests{
 
     private UserService userService;
 

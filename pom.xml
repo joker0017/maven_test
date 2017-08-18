@@ -14,12 +14,6 @@
     <junit.version>4.12</junit.version>
   </properties>
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
@@ -50,6 +44,13 @@
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
       <version>1.4</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.11</version>
+      <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
     <dependency>
@@ -89,8 +90,37 @@
       <artifactId>spring-aspects</artifactId>
       <version>4.3.2.RELEASE</version>
     </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>4.3.2.RELEASE</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
+    <dependency>
+      <groupId>com.beust</groupId>
+      <artifactId>jcommander</artifactId>
+      <version>1.72</version>
+    </dependency>
   </dependencies>
   <build>
+    <plugins>
+      <!-- jetty插件 -->
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <version>6.1.5</version>
+        <configuration>
+          <webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>
+          <scanIntervalSeconds>3</scanIntervalSeconds>
+          <contextPath>/jetty</contextPath>
+          <connectors>
+            <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+              <port>4000</port>
+            </connector>
+          </connectors>
+        </configuration>
+      </plugin>
+    </plugins>
     <finalName>maven_test</finalName>
   </build>
 </project>

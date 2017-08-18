@@ -55,6 +55,7 @@ public class UserService {
     public LoginLogDao getLoginLogDao() {
         return loginLogDao;
     }
+
     @Autowired
     public void setLoginLogDao(LoginLogDao loginLogDao) {
         this.loginLogDao = loginLogDao;
